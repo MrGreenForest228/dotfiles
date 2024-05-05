@@ -1,0 +1,51 @@
+#
+# ~/.bashrc
+#
+
+# My own aliases
+alias pacman-mirrors="bash ~/some_files/scripts/pacman-mirrors"
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+# DoomEmacs
+
+export PATH=$PATH:/home/mrgreen/.config/emacs/bin
+
+# Android 
+export ANDROID_SDK_ROOT=/home/mrgreen/Android/Sdk
+export ANDROID_NDK_ROOT=/home/mrgreen/Android/Sdk/ndk
+export PATH=$PATH:$ANDROID_SDK_ROOT/build-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+##-----------------------------------------------------
+## synth-shell-prompt.sh
+if [ -f /home/mrgreen/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source /home/mrgreen/.config/synth-shell/synth-shell-prompt.sh
+fi
+
+##-----------------------------------------------------
+## better-ls
+if [ -f /home/mrgreen/.config/synth-shell/better-ls.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source /home/mrgreen/.config/synth-shell/better-ls.sh
+fi
+
+##-----------------------------------------------------
+## alias
+if [ -f /home/mrgreen/.config/synth-shell/alias.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source /home/mrgreen/.config/synth-shell/alias.sh
+fi
+
+fastfetch
+
+EDITOR="/usr/bin/nano"
